@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{E77F6D8A-7A21-4758-849E-A025FAE80E63}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MonoFlash</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Application.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Assets.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Display\Bitmap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Display\BitmapData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Display\DisplayObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Display\Sprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Display\Stage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\Event.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\EventDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\TextField.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Display\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Events\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Text\" />
+  </ItemGroup>
+</Project>
