@@ -1,24 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>PlanesGame.iOS</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>GameThumbnail.png</string>
+		<string>Icon</string>
+		<string>Icon@2x</string>
+		<string>Icon-60@2x</string>
 	</array>
-	<key>CFBundleIdentifier</key>
-	<string>project.MonoGame.PlanesGame.iOS</string>
 	<key>MinimumOSVersion</key>
-	<string>4.2</string>
+	<string>5.2</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIPrerenderedIcon</key>
+	<true/>
+	<key>CFBundleDisplayName</key>
+	<string>Multiplanes</string>
+	<key>CFBundleIdentifier</key>
+	<string>GameOfDucks.Multiplanes</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 </dict>
 </plist>
-

@@ -59,6 +59,9 @@
     <Reference Include="OpenTK">
       <HintPath>..\packages\MonoGame.Framework.MacOS.3.3.0.0\lib\net45\OpenTK.dll</HintPath>
     </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\..\..\..\Downloads\Lidgren-network-gen3\Lidgren.Network\obj\Release\Lidgren.Network.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -67,6 +70,15 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="packages.config" />
+    <None Include="..\PlanesGame\Content\bin\MacOSX\assets\Minecraft.ttf">
+      <Link>Content\assets\Minecraft.ttf</Link>
+    </None>
+    <None Include="..\PlanesGame\Content\bin\MacOSX\assets\pixelmix.ttf">
+      <Link>Content\assets\pixelmix.ttf</Link>
+    </None>
+    <None Include="..\PlanesGame\Content\bin\MacOSX\assets\rainyhearts.ttf">
+      <Link>Content\assets\rainyhearts.ttf</Link>
+    </None>
   </ItemGroup>
   <Import Project="..\MonoFlash\MonoFlash.projitems" Label="Shared" Condition="Exists('..\MonoFlash\MonoFlash.projitems')" />
   <Import Project="..\PlanesGame\PlanesGame.projitems" Label="Shared" Condition="Exists('..\PlanesGame\PlanesGame.projitems')" />
@@ -75,6 +87,9 @@
     <Folder Include="Content\assets\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\MainFont.xnb">
+      <Link>Content\assets\MainFont.xnb</Link>
+    </Content>
     <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\bullet.xnb">
       <Link>Content\assets\bullet.xnb</Link>
     </Content>
@@ -90,11 +105,32 @@
     <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\3.xnb">
       <Link>Content\assets\background\3.xnb</Link>
     </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\particles\fire.xnb">
+      <Link>Content\assets\particles\fire.xnb</Link>
+    </Content>
     <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\particles\smoke.xnb">
       <Link>Content\assets\particles\smoke.xnb</Link>
     </Content>
-    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\MainFont.xnb">
-      <Link>Content\assets\MainFont.xnb</Link>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\bar.xnb">
+      <Link>Content\assets\ui\bar.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\bar_l.xnb">
+      <Link>Content\assets\ui\bar_l.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\down.xnb">
+      <Link>Content\assets\ui\down.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\fire.xnb">
+      <Link>Content\assets\ui\fire.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\left.xnb">
+      <Link>Content\assets\ui\left.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\right.xnb">
+      <Link>Content\assets\ui\right.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\up.xnb">
+      <Link>Content\assets\ui\up.xnb</Link>
     </Content>
   </ItemGroup>
 </Project>

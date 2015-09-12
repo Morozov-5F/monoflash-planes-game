@@ -43,6 +43,7 @@ namespace MonoFlash
             graphics.PreferredBackBufferHeight = 600;
 
             string contentDirectory = "Content";
+            /*
 			#if __IOS__
             contentDirectory += "iOS";
 			#elif __OSX__
@@ -51,7 +52,7 @@ namespace MonoFlash
             contentDirectory = "Content";
 			#elif ANDROID 
             contentDirectory = "Content/bin/Android";
-			#endif
+			#endif*/
             Content.RootDirectory = contentDirectory;     
             #if __MOBILE__
             graphics.IsFullScreen = true;       
@@ -133,7 +134,8 @@ namespace MonoFlash
                     stage.DispatchEvent(mouseUpEvent);                
                 }
                 // Dispatch Event.TOUCH_MOVE on stage when mouse is moved
-                if (lastMouseState.Position != currentMouseState.Position)
+                if (lastMouseState.Position != currentMouseState.Position && currentMouseState.LeftButton == ButtonState.Pressed 
+                    && lastMouseState.LeftButton == ButtonState.Pressed)
                 {
                     var mouseMoveEvent = new Event(Event.TOUCH_MOVE);
                     mouseMoveEvent.position = currentMouseState.Position.ToVector2();
@@ -146,22 +148,27 @@ namespace MonoFlash
 			TouchCollection touches = TouchPanel.GetState();
 			foreach (TouchLocation touch in touches)
 			{
+                var pos = touch.Position;
+            #if __IOS__
+                pos = new Vector2(pos.X * stage.StageWidth / TouchPanel.DisplayWidth, 
+                                  pos.Y * stage.StageHeight / TouchPanel.DisplayHeight);
+            #endif
 				if (touch.State == TouchLocationState.Pressed)
 				{
 					var touchBeginEvent = new Event(Event.TOUCH_BEGIN);
-					touchBeginEvent.position = touch.Position;
+					touchBeginEvent.position = pos;
 					stage.DispatchEvent(touchBeginEvent);
 				}
 				else if (touch.State == TouchLocationState.Released)
 				{
 					var touchEndEvent = new Event(Event.TOUCH_END);
-					touchEndEvent.position = touch.Position;
+					touchEndEvent.position = pos;
 					stage.DispatchEvent(touchEndEvent);
 				}
 				else if (touch.State == TouchLocationState.Moved)
 				{
 					var touchMoveEvent = new Event(Event.TOUCH_MOVE);
-					touchMoveEvent.position = touch.Position;
+					touchMoveEvent.position = pos;
 					stage.DispatchEvent(touchMoveEvent);
 				}
 			}

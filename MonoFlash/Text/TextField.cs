@@ -27,7 +27,7 @@ namespace MonoFlash.Text
             base.Render(spriteBatch, transform);
         }
 
-        public override Microsoft.Xna.Framework.Vector4 GetBounds()
+        public override Vector4 GetBounds()
         {
             var textBounds = font.MeasureString(text);
 

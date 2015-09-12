@@ -22,6 +22,10 @@
     <MtouchArch>i386</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -57,6 +61,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -66,6 +75,9 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>..\packages\MonoGame.Framework.iOS.3.3.0.0\lib\XamariniOS\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\..\..\..\Downloads\Lidgren-network-gen3\Lidgren.Network\obj\Release\Lidgren.Network.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -74,12 +86,77 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="packages.config" />
+    <None Include="Entitlements.plist" />
+    <None Include="..\PlanesGame\Content\bin\iOS\assets\Minecraft.ttf">
+      <Link>Content\assets\Minecraft.ttf</Link>
+    </None>
+    <None Include="..\PlanesGame\Content\bin\iOS\assets\pixelmix.ttf">
+      <Link>Content\assets\pixelmix.ttf</Link>
+    </None>
+    <None Include="..\PlanesGame\Content\bin\iOS\assets\rainyhearts.ttf">
+      <Link>Content\assets\rainyhearts.ttf</Link>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Default.png" />
-    <BundleResource Include="GameThumbnail.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
   </ItemGroup>
   <Import Project="..\PlanesGame\PlanesGame.projitems" Label="Shared" Condition="Exists('..\PlanesGame\PlanesGame.projitems')" />
   <Import Project="..\MonoFlash\MonoFlash.projitems" Label="Shared" Condition="Exists('..\MonoFlash\MonoFlash.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="Content\assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\MainFont.xnb">
+      <Link>Content\assets\MainFont.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\bullet.xnb">
+      <Link>Content\assets\bullet.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\1.xnb">
+      <Link>Content\assets\background\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\2.xnb">
+      <Link>Content\assets\background\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\3.xnb">
+      <Link>Content\assets\background\3.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\particles\fire.xnb">
+      <Link>Content\assets\particles\fire.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\particles\smoke.xnb">
+      <Link>Content\assets\particles\smoke.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\plane.xnb">
+      <Link>Content\assets\plane.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\down.xnb">
+      <Link>Content\assets\ui\down.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\bar.xnb">
+      <Link>Content\assets\ui\bar.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\bar_l.xnb">
+      <Link>Content\assets\ui\bar_l.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\fire.xnb">
+      <Link>Content\assets\ui\fire.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\left.xnb">
+      <Link>Content\assets\ui\left.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\right.xnb">
+      <Link>Content\assets\ui\right.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\up.xnb">
+      <Link>Content\assets\ui\up.xnb</Link>
+    </Content>
+  </ItemGroup>
 </Project>

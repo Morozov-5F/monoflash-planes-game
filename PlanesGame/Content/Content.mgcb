@@ -6,7 +6,7 @@
 /platform:MacOSX
 /config:
 /profile:Reach
-/compress:False
+/compress:True
 
 #-------------------------------- References --------------------------------#
 
@@ -46,6 +46,17 @@
 /processorParam:TextureFormat=Color
 /build:assets/background/3.png
 
+#begin assets/particles/fire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:assets/particles/fire.png
+
 #begin assets/particles/smoke.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -56,6 +67,92 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:assets/particles/smoke.png
+
+#begin assets/ui/bar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:assets/ui/bar.png
+
+#begin assets/ui/bar_l.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:assets/ui/bar_l.png
+
+#begin assets/ui/down.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:assets/ui/down.png
+
+#begin assets/ui/fire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:assets/ui/fire.png
+
+#begin assets/ui/left.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:assets/ui/left.png
+
+#begin assets/ui/right.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:assets/ui/right.png
+
+#begin assets/ui/up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:assets/ui/up.png
+
+#begin assets/MainFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=NoChange
+/build:assets/MainFont.spritefont
+
+#begin assets/Minecraft.ttf
+/copy:assets/Minecraft.ttf
 
 #begin assets/bullet.png
 /importer:TextureImporter
@@ -68,6 +165,9 @@
 /processorParam:TextureFormat=Color
 /build:assets/bullet.png
 
+#begin assets/pixelmix.ttf
+/copy:assets/pixelmix.ttf
+
 #begin assets/plane.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -79,15 +179,6 @@
 /processorParam:TextureFormat=Color
 /build:assets/plane.png
 
-#begin assets/MainFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=NoChange
-/build:assets/MainFont.spritefont
-
 #begin assets/rainyhearts.ttf
 /copy:assets/rainyhearts.ttf
-
-#begin assets/pixelmix.ttf
-/copy:assets/pixelmix.ttf
 

@@ -19,6 +19,9 @@ namespace MonoFlash.Display
 
         public Bitmap(BitmapData bitmapData)
         { 
+            if (bitmapData == null)
+                throw new ArgumentNullException("Given BitmapData is null");
+            
             this.bitmapData = bitmapData;
             width = bitmapData.texture.Width;
             height = bitmapData.texture.Height;

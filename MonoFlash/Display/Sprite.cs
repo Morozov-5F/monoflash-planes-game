@@ -10,9 +10,12 @@ namespace MonoFlash.Display
     public class Sprite : DisplayObject
     {
         public List<DisplayObject> children;
+        public bool visible;
 
         public Sprite()
         {
+            visible = true;
+
             children = new List<DisplayObject>();
 
             AddEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
@@ -46,8 +49,13 @@ namespace MonoFlash.Display
 
         private void DispatchEventToClickedChildren(Event e)
         {
-            foreach (var child in children)
+            for (int i = 0; i < children.Count; ++i)
             {
+                var child = children[i];
+                if (child == null)
+                {
+                    continue;
+                }
                 if (child.isClicked)
                 {
                     var touchEvent = new Event(e.type);
@@ -110,10 +118,12 @@ namespace MonoFlash.Display
         public override void Render(SpriteBatch spriteBatch, Matrix transform)
         {
             var newTransform = this.transformMatrix * transform;
-
-            foreach (var currentChild in children)
+            if (visible)
             {
-                currentChild.Render(spriteBatch, newTransform);
+                foreach (var currentChild in children)
+                {
+                    currentChild.Render(spriteBatch, newTransform);
+                }
             }
             base.Render(spriteBatch, transform);
         }

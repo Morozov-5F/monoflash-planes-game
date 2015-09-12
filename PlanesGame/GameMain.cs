@@ -16,7 +16,6 @@ namespace PlanesGame
     public class GameMain : Sprite
     {
         public static ScreenManager screenManager;
-
         // Глобальный масштаб
         public static float mainScale;
         // Размер экрана с учетом масштаба
