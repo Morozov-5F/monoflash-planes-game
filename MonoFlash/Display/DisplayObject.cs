@@ -9,6 +9,8 @@ namespace MonoFlash.Display
 {
     public class DisplayObject : EventDispatcher
     {
+        public bool flippedX, flippedY;
+
         public bool isClicked = false;
         public static Matrix TRANSFORM_ABSOLUTE
         {
@@ -86,9 +88,9 @@ namespace MonoFlash.Display
         {
             get
             {
-                Vector3 pos = Vector3.Zero, scale = Vector3.Zero;
-                Quaternion rotation;
-                if (!transformMatrix.Decompose(out scale, out rotation, out pos))
+                Vector2 pos = Vector2.Zero, scale = Vector2.Zero;
+                float rotation;
+                if (!DecomposeMatrix(ref transformMatrix, out pos, out rotation, out scale))
                 {
                     return 0;
                 }
@@ -96,18 +98,20 @@ namespace MonoFlash.Display
             }
             set
             {
-                transformMatrix = Matrix.CreateScale(new Vector3(value, ScaleY, 1)) * 
+                transformMatrix = Matrix.CreateScale(new Vector3(Math.Abs(value), ScaleY, 1)) * 
                     Matrix.CreateRotationZ(MathHelper.ToRadians(Rotation)) * 
                     Matrix.CreateTranslation(X, Y, 0);
+
+                flippedX ^= (value < 0);
             }
         }
         public float ScaleY
         {
             get
             {
-                Vector3 pos = Vector3.Zero, scale = Vector3.Zero;
-                Quaternion rotation;
-                if (!transformMatrix.Decompose(out scale, out rotation, out pos))
+                Vector2 pos = Vector2.Zero, scale = Vector2.Zero;
+                float rotation;
+                if (!DecomposeMatrix(ref transformMatrix, out pos, out rotation, out scale))
                 {
                     return 0;
                 }
@@ -115,9 +119,11 @@ namespace MonoFlash.Display
             }
             set
             {
-                transformMatrix = Matrix.CreateScale(new Vector3(ScaleX, value, 1)) * 
+                transformMatrix = Matrix.CreateScale(new Vector3(ScaleX, Math.Abs(value), 1)) * 
                     Matrix.CreateRotationZ(MathHelper.ToRadians(Rotation)) * 
                     Matrix.CreateTranslation(X, Y, 0);
+
+                flippedY ^= (value < 0);
             }
         }
         public float Width

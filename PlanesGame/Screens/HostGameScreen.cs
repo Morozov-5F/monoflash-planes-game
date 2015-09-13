@@ -37,8 +37,8 @@ namespace PlanesGame.Screens
             {
                 bgLayers[i] = new Sprite();
 
-                var bmp1 = new Bitmap(Assets.GetBitmapData("assets/background/" + (i + 1).ToString(), true));
-                var bmp2 = new Bitmap(Assets.GetBitmapData("assets/background/" + (i + 1).ToString(), true));
+                var bmp1 = new Bitmap(Assets.GetBitmapData("assets/background/1/" + (i + 1).ToString(), true));
+                var bmp2 = new Bitmap(Assets.GetBitmapData("assets/background/1/" + (i + 1).ToString(), true));
 
                 bmp2.X = bmp1.Width;
 
@@ -90,7 +90,7 @@ namespace PlanesGame.Screens
 
         public void PlayerJoined(string remoteNick)
         {
-            GameMain.screenManager.LoadScreen(new GameScreen(client, nick, remoteNick));
+            GameMain.screenManager.LoadScreen(new GameScreen(client, nick, remoteNick, true));
         }
 
         public override void Update(float deltaTime)

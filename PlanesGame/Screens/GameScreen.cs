@@ -8,6 +8,7 @@ using Lidgren.Network;
 using PlanesGame.Network;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using MonoFlash.Text;
 
 namespace PlanesGame.Screens
 {
@@ -20,22 +21,46 @@ namespace PlanesGame.Screens
         private float inputX = 0, inputY = 1;
         private float reloadTime;
 
-        private List<Bullet> bullets;
+        private float[] LAYER_DEPTHS = { 0, 0.5f, 0.75f };
 
-        // UI
+        private List<Bullet> bullets;
+        private int levelNumber;
+
+        #if __MOBILE__
         private Bitmap decelerateButton;
         private Bitmap leftButton;
         private Bitmap rightButton;
         private Bitmap fireButton;
+        #endif
 
         private NetClient client;
         private string localNick, remoteNick;
+        public const int WORLD_WIDTH = 160;
+        private bool isHost;
 
-        public GameScreen(NetClient client, string localNick, string remoteNick)
+        private float respTime;
+        private float RespawnTime
+        {
+            get
+            {
+                return respTime;
+            }
+            set
+            {
+                respTime = value;
+                respTime = Math.Max(0, respTime);
+            }  
+        }
+
+        private TextField resultLabel, countLabel;
+
+        public GameScreen(NetClient client, string localNick, string remoteNick, bool isHost)
         {
             this.client = client;
             this.localNick = localNick;
             this.remoteNick = remoteNick;
+
+            this.isHost = isHost;  
         }
 
         public override void Load()
@@ -51,31 +76,27 @@ namespace PlanesGame.Screens
             bgContainer = new Sprite();
             worldContainer.AddChild(bgContainer);
 
-            for (int i = 0; i < 3; ++i)
-            {
-                bgLayers[i] = new Sprite();
-
-                var bmp1 = new Bitmap(Assets.GetBitmapData("assets/background/" + (i + 1).ToString(), true));
-                var bmp2 = new Bitmap(Assets.GetBitmapData("assets/background/" + (i + 1).ToString(), true));
-
-                bmp2.X = bmp1.Width;
-
-                bgLayers[i].AddChild(bmp1);
-                bgLayers[i].AddChild(bmp2);
-
-                bgContainer.AddChild(bgLayers[i]);
-            }
+            LoadBackground(levelNumber);
 
             // Игра
             gameContainer = new Sprite();
             worldContainer.AddChild(gameContainer);
 
             localPlayer = new Player(localNick, true);
-            localPlayer.X = localPlayer.Y = 10;
-            gameContainer.AddChild(localPlayer);
-
             remotePlayer = new Player(remoteNick, false);
-            remotePlayer.X = remotePlayer.Y = 16;
+            if (isHost)
+            {
+                localPlayer.X = localPlayer.Y = remotePlayer.Y = 10;
+                remotePlayer.X = WORLD_WIDTH - GameMain.ScreenWidth / 2;
+                remotePlayer.Rotation = 180;
+            }
+            else
+            {
+                remotePlayer.X = remotePlayer.Y = localPlayer.Y = 10;
+                localPlayer.X = WORLD_WIDTH - GameMain.ScreenWidth / 2;
+                localPlayer.Rotation = 180;
+            }
+            gameContainer.AddChild(localPlayer);
             gameContainer.AddChild(remotePlayer);
 
             // Интерфейс
@@ -111,8 +132,23 @@ namespace PlanesGame.Screens
             fireButton.AddEventListener(Event.TOUCH_END, onFireBegin);
             leftButton.color = rightButton.color = decelerateButton.color = fireButton.color = new Color(Color.DarkGray, 20);
             #endif
+
+            if (isHost)
+                ChangeLevel();
+
+            resultLabel = new TextField();
+            resultLabel.font = Assets.GetFont("assets/MainFont");
+            resultLabel.visible = false;
+
+            countLabel = new TextField();
+            countLabel.font = resultLabel.font;
+            countLabel.visible = false;
+
+            guiContainer.AddChild(resultLabel);
+            guiContainer.AddChild(countLabel);
         }
 
+        #if __MOBILE__
         void onDecelerateBegin(Event e)
         {
             inputY = -1;   
@@ -140,19 +176,59 @@ namespace PlanesGame.Screens
         {
             CreateLocalShot();
         }
+        #endif
+
+        void LoadBackground(int levelNumber)
+        {
+            levelNumber += 1;
+            if (levelNumber > 4)
+                throw new IndexOutOfRangeException();
+
+            // Удаляем старый фон
+            for (int i = 0; i < 3; ++i)
+            {
+                bgContainer.RemoveChild(bgLayers[i]);
+                bgLayers[i] = null;
+            }
+
+            for (int i = 0; i < 3; ++i)
+            {
+                bgLayers[i] = new Sprite();
+
+                BitmapData bmpData = Assets.GetBitmapData("assets/background/" + levelNumber + "/"+ (i + 1).ToString(), true);
+                var bmp1 = new Bitmap(bmpData);
+                var bmp2 = new Bitmap(bmpData);
+
+                bmp2.X = bmp1.Width; 
+                bgLayers[i].AddChild(bmp1);
+                bgLayers[i].AddChild(bmp2);
+                bgContainer.AddChild(bgLayers[i]);
+            }
+        }
+
+        private void ChangeLevel()
+        {
+            NetOutgoingMessage outMsg = client.CreateMessage();
+            outMsg.Write((byte)GameClient.DataMessageTypes.LocalChangeLevel);
+            var newLevelIndex = new Random((int)DateTime.Now.Ticks).Next(0, 4);
+            outMsg.Write((byte)newLevelIndex);
+            client.SendMessage(outMsg, NetDeliveryMethod.ReliableOrdered);
+
+            LoadBackground(newLevelIndex);
+        }
 
         public void CreateLocalShot()
         {
-            if (reloadTime >= Player.RELOAD_TIME)
+            if ((reloadTime >= Player.RELOAD_TIME) && (!localPlayer.isDead))
             {
+                reloadTime = 0;
                 var newBullet = CreateBullet(localPlayer);
                 gameContainer.AddChildAt(newBullet, gameContainer.GetChildIndex(localPlayer) - 1);
                 bullets.Add(newBullet);
 
                 NetOutgoingMessage bulMsg = client.CreateMessage();
                 bulMsg.Write((byte)GameClient.DataMessageTypes.LocalShooting);
-                client.SendMessage(bulMsg, NetDeliveryMethod.ReliableOrdered);
-                reloadTime = 0;
+                client.SendMessage(bulMsg, NetDeliveryMethod.Unreliable);
             }
         }
 
@@ -167,6 +243,40 @@ namespace PlanesGame.Screens
             throw new NotImplementedException();
         }
 
+        public void ShowLabel(bool lost = false)
+        {
+            resultLabel.text = (lost) ? "YOU LOST" : "YOU WON";
+            resultLabel.textColor = (lost) ? Color.LightSalmon : Color.LightGreen;
+            resultLabel.X = GameMain.ScreenWidth / 2 - resultLabel.Width / 2;
+            resultLabel.Y = GameMain.ScreenHeight / 2 - resultLabel.Height * 1.25f;
+            resultLabel.visible = true;
+
+            countLabel.text = "3";
+            countLabel.X = GameMain.ScreenWidth / 2 - countLabel.Width / 2;
+            countLabel.Y = resultLabel.Y + resultLabel.Height;
+            countLabel.textColor = resultLabel.textColor;
+            countLabel.visible = true;
+
+            RespawnTime = 3;
+        }
+ 
+        private void RespawnLocalPlayer()
+        {
+            if (isHost)
+            {
+                localPlayer.X = localPlayer.Y = remotePlayer.Y = 10;
+            }
+            else
+            {
+                localPlayer.Y = 10;
+                localPlayer.X = WORLD_WIDTH - GameMain.ScreenWidth / 2;
+                localPlayer.Rotation = 180;
+            }
+            localPlayer.HP = Player.MAX_HP;
+            localPlayer.isDead = false;
+            localPlayer.visible = true;
+        }
+
         public override void Update(float deltaTime)
         {
             reloadTime += deltaTime;
@@ -175,8 +285,25 @@ namespace PlanesGame.Screens
             remotePlayer.Update(deltaTime);
 
             var worldX = -localPlayer.X + GameMain.ScreenWidth / 2;
-            worldX = Math.Max(worldX, -bgContainer.Width + GameMain.ScreenWidth);
+            worldX = Math.Max(worldX, -GameScreen.WORLD_WIDTH + GameMain.ScreenWidth);
             worldX = Math.Min(worldX, 0);
+
+            var dx = worldX - worldContainer.X;
+
+            for (int i = 0; i < 3; ++i)
+            {
+                var layer = bgLayers[i];
+                layer.X += dx * LAYER_DEPTHS[i];
+
+                if (layer.X + layer.Width < GameMain.ScreenWidth)
+                {
+                    layer.X += layer.Width / 2;
+                }
+                else if (layer.X > 0)
+                {
+                    layer.X -= layer.Width / 2;
+                }
+            }
             worldContainer.X = worldX; 
 
             for (int i = 0; i < bullets.Count; ++i)
@@ -198,6 +325,22 @@ namespace PlanesGame.Screens
                 {
                     gameContainer.RemoveChild(cB);
                     cB = null;
+                    // Если игрок локальный, то отсылаем серверу попадания
+                    if (playerToHit == localPlayer)
+                    {
+                        localPlayer.HP--;
+                        if (localPlayer.HP <= 0)
+                        {
+                            localPlayer.isDead = true;
+                            localPlayer.visible = false;
+
+                            ShowLabel(true);
+                        }
+                        NetOutgoingMessage hitMsg = client.CreateMessage();
+                        hitMsg.Write((byte)GameClient.DataMessageTypes.LocalHit);
+                        client.SendMessage(hitMsg, NetDeliveryMethod.Unreliable);
+                    }
+
                     continue;
                 }
             }
@@ -228,20 +371,48 @@ namespace PlanesGame.Screens
 
             if (localPlayer.X + localPlayer.Width / 2 < 0)
             {
-                localPlayer.X = bgLayers[0].Width - localPlayer.Width / 2;
+                localPlayer.X = WORLD_WIDTH - localPlayer.Width / 2;
             }
-            if (localPlayer.X - localPlayer.Width / 2 > bgLayers[0].Width)
+            if (localPlayer.X - localPlayer.Width / 2 > WORLD_WIDTH)
             {
                 localPlayer.X = -localPlayer.Width / 2;
             }
 
+            #if DEBUG
+            if (client == null)
+                return;
+            #endif
+
             // Send coordinates
-            NetOutgoingMessage outMsg = client.CreateMessage();
-            outMsg.Write((byte)GameClient.DataMessageTypes.LocalCoordinates);
-            outMsg.Write(localPlayer.X);
-            outMsg.Write(localPlayer.Y);
-            outMsg.Write(localPlayer.Rotation);
-            client.SendMessage(outMsg, NetDeliveryMethod.Unreliable);
+            if (!localPlayer.isDead)
+            {
+                NetOutgoingMessage outMsg = client.CreateMessage();
+                outMsg.Write((byte)GameClient.DataMessageTypes.LocalCoordinates);
+                outMsg.Write(localPlayer.X);
+                outMsg.Write(localPlayer.Y);
+                outMsg.Write(localPlayer.Rotation);
+                client.SendMessage(outMsg, NetDeliveryMethod.Unreliable);
+            }
+
+            if (localPlayer.isDead || remotePlayer.isDead)
+            {
+                RespawnTime -= deltaTime;
+                countLabel.text = Math.Round(RespawnTime).ToString();
+                if (localPlayer.isDead && RespawnTime <= 0)
+                {
+                    RespawnLocalPlayer();
+
+                    NetOutgoingMessage respMsg = client.CreateMessage();
+                    respMsg.Write((byte)GameClient.DataMessageTypes.LocalRespawn);
+                    client.SendMessage(respMsg, NetDeliveryMethod.ReliableOrdered);
+
+                    resultLabel.visible = false;
+                    countLabel.visible = false;
+
+                    if (isHost)
+                        ChangeLevel();
+                }
+            }
 
             NetIncomingMessage msg;
             while ((msg = client.ReadMessage()) != null)
@@ -261,6 +432,29 @@ namespace PlanesGame.Screens
                             var newBullet = CreateBullet(remotePlayer);
                             gameContainer.AddChildAt(newBullet, gameContainer.GetChildIndex(localPlayer) - 1);
                             bullets.Add(newBullet);
+                        }
+                        if (msgCode == (byte)GameClient.DataMessageTypes.RemoteChangeLevel)
+                        {
+                            LoadBackground(msg.ReadByte());
+                        }
+                        if (msgCode == (byte)GameClient.DataMessageTypes.RemoteHit)
+                        {
+                            remotePlayer.HP--;
+                            if (remotePlayer.HP <= 0)
+                            {
+                                remotePlayer.isDead = true;
+                                remotePlayer.visible = false;
+
+                                ShowLabel();
+                            }
+                        }
+                        if (msgCode == (byte)GameClient.DataMessageTypes.RemoteRespawn)
+                        {
+                            remotePlayer.HP = Player.MAX_HP;
+                            remotePlayer.isDead = false;
+                            remotePlayer.visible = true;
+
+                            resultLabel.visible = countLabel.visible = false;
                         }
                         break;
                     default:

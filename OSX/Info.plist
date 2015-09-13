@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.MonoGame.Samples.Draw2D.MacOS</string>
+	<string>com.GameOfDucks.Multiplanes</string>
 	<key>CFBundleName</key>
 	<string>MonoGame.Samples.Draw2D.MacOS</string>
 	<key>CFBundleVersion</key>
@@ -14,5 +14,9 @@
 	<string>NSApplication</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.games</string>
+	<key>CFBundleIconFile</key>
+	<string>icon</string>
+	<key>CFBundleDisplayName</key>
+	<string>Multiplanes</string>
 </dict>
 </plist>

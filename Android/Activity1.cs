@@ -7,12 +7,18 @@ using Android.Content.PM;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using PlanesGame;
+
+#if OUYA
+using Ouya.Console.Api;
+#endif
 
 using Microsoft.Xna.Framework;
+using MonoFlash;
 
 namespace PlanesGame.Droid
 {
-    [Activity(Label = "PlanesGame.Droid", 
+    [Activity(Label = "Multiplanes", 
         MainLauncher = true,
         Icon = "@drawable/icon",
         Theme = "@style/Theme.Splash",
@@ -20,20 +26,23 @@ namespace PlanesGame.Droid
         LaunchMode = LaunchMode.SingleInstance,
         ConfigurationChanges = ConfigChanges.Orientation |
         ConfigChanges.KeyboardHidden |
-        ConfigChanges.Keyboard)]
+        ConfigChanges.Keyboard |
+        ConfigChanges.ScreenSize)]
+    #if OUYA
+    [IntentFilter(new[] { Intent.ActionMain }
+    , Categories = new[] { Intent.CategoryLauncher, OuyaIntent.CategoryGame })]
+    #endif
     public class Activity1 : AndroidGameActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // Create our OpenGL view, and display it
-            Game1.Activity = this;
-            var g = new Game1();
-            SetContentView(g.Window);
+            var g = new MonoFlash.Application(new GameMain());
+            SetContentView(g.Services.GetService<View>());
             g.Run();
         }
-		
+
     }
 }
 

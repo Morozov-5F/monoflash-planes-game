@@ -24,7 +24,13 @@ namespace PlanesGame.Network
             HostConnectionResponse = 0x13,
             ClientJoined = 0x04, 
             LocalShooting = 0x05,
-            RemoteShooting = 0x15
+            RemoteShooting = 0x15,
+            LocalChangeLevel = 0x06, 
+            RemoteChangeLevel = 0x16,
+            LocalHit = 0x07,
+            RemoteHit = 0x17,
+            LocalRespawn = 0x08,
+            RemoteRespawn = 0x18
         }
     }
 }

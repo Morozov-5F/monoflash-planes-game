@@ -43,16 +43,6 @@ namespace MonoFlash
             graphics.PreferredBackBufferHeight = 600;
 
             string contentDirectory = "Content";
-            /*
-			#if __IOS__
-            contentDirectory += "iOS";
-			#elif __OSX__
-            contentDirectory += "MacOSX";
-			#elif WINDOWS
-            contentDirectory = "Content";
-			#elif ANDROID 
-            contentDirectory = "Content/bin/Android";
-			#endif*/
             Content.RootDirectory = contentDirectory;     
             #if __MOBILE__
             graphics.IsFullScreen = true;       
@@ -80,7 +70,7 @@ namespace MonoFlash
             stage.AddChild(rootSprite);
 
             #if __MOBILE__ || DEBUG
-            //debugFont = Content.Load<SpriteFont>("fonts/menu");
+            debugFont = Content.Load<SpriteFont>("assets/MainFont");
             #endif
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -93,7 +83,6 @@ namespace MonoFlash
 
         protected override void Update(GameTime gameTime)
         {
-//            Debug.WriteLine(gameTime.IsRunningSlowly);
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             #if __MOBILE__ || DEBUG
             elapsedTime += gameTime.ElapsedGameTime;
@@ -187,17 +176,17 @@ namespace MonoFlash
             Color color = Color.Green;
             if (frameRate >= 55)
             {
-                color = Color.Green;
+                color = Color.LightGreen;
             }
             if (frameRate >= 30 && frameRate < 55)
             {
-                color = Color.Yellow;
+                color = Color.LightYellow;
             }
             if (frameRate < 30)
             {
                 color = Color.Red;
             }
-            //spriteBatch.DrawString(debugFont, String.Format("FPS: {0}", frameRate), Vector2.Zero, color, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+            spriteBatch.DrawString(debugFont, String.Format("FPS: {0}", frameRate), Vector2.Zero, color, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
             #endif
             spriteBatch.End();
             base.Draw(gameTime);

@@ -9,6 +9,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MonoFlash", "MonoFlash\Mono
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanesGame.OSX", "OSX\PlanesGame.OSX.csproj", "{F9953D6D-2EDD-42AD-81CE-16B4D1FDAF61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanesGame.Droid", "Android\PlanesGame.Droid.csproj", "{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -19,6 +21,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Release|iPhone.Build.0 = Release|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{07A92DF6-6EB2-4FA8-A579-1FD861CB95D4}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{F9953D6D-2EDD-42AD-81CE-16B4D1FDAF61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9953D6D-2EDD-42AD-81CE-16B4D1FDAF61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9953D6D-2EDD-42AD-81CE-16B4D1FDAF61}.Debug|iPhone.ActiveCfg = Debug|Any CPU

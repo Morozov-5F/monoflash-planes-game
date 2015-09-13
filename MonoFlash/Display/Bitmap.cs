@@ -40,8 +40,12 @@ namespace MonoFlash.Display
             if (!DecomposeMatrix(ref newTransform, out pos, out rot, out scale))
             {
                 Debug.WriteLine("Error decomposing matrix");
+                return;
             }
-            spriteBatch.Draw(bitmapData.texture, pos, null, color,  rot, Vector2.Zero, scale, SpriteEffects.None, layerDepth);
+            SpriteEffects effects = (!flippedX) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            effects |= (!flippedY) ? SpriteEffects.None : SpriteEffects.FlipVertically;
+
+            spriteBatch.Draw(bitmapData.texture, pos, null, color, rot, Vector2.Zero, scale, effects, layerDepth);
             base.Render(spriteBatch, transform);
         }
 

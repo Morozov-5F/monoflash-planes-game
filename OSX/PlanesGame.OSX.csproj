@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>PlanesGame.OSX</RootNamespace>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
-    <AssemblyName>PlanesGame.OSX</AssemblyName>
+    <AssemblyName>Multiplanes</AssemblyName>
     <SuppressXamMacMigration>True</SuppressXamMacMigration>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -34,13 +34,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <LinkMode>SdkOnly</LinkMode>
     <UseRefCounting>false</UseRefCounting>
     <UseSGen>false</UseSGen>
-    <IncludeMonoRuntime>true</IncludeMonoRuntime>
-    <CreatePackage>true</CreatePackage>
-    <CodeSigningKey>Developer ID Application</CodeSigningKey>
-    <EnableCodeSigning>true</EnableCodeSigning>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+    <CreatePackage>false</CreatePackage>
+    <EnableCodeSigning>false</EnableCodeSigning>
     <EnablePackageSigning>false</EnablePackageSigning>
   </PropertyGroup>
   <ItemGroup>
@@ -93,23 +91,14 @@
     <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\bullet.xnb">
       <Link>Content\assets\bullet.xnb</Link>
     </Content>
-    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\plane.xnb">
-      <Link>Content\assets\plane.xnb</Link>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\logo.xnb">
+      <Link>Content\assets\logo.xnb</Link>
     </Content>
-    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\1.xnb">
-      <Link>Content\assets\background\1.xnb</Link>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\plane_blue.xnb">
+      <Link>Content\assets\plane_blue.xnb</Link>
     </Content>
-    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\2.xnb">
-      <Link>Content\assets\background\2.xnb</Link>
-    </Content>
-    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\3.xnb">
-      <Link>Content\assets\background\3.xnb</Link>
-    </Content>
-    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\particles\fire.xnb">
-      <Link>Content\assets\particles\fire.xnb</Link>
-    </Content>
-    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\particles\smoke.xnb">
-      <Link>Content\assets\particles\smoke.xnb</Link>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\plane_red.xnb">
+      <Link>Content\assets\plane_red.xnb</Link>
     </Content>
     <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\bar.xnb">
       <Link>Content\assets\ui\bar.xnb</Link>
@@ -132,5 +121,53 @@
     <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\ui\up.xnb">
       <Link>Content\assets\ui\up.xnb</Link>
     </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\particles\fire.xnb">
+      <Link>Content\assets\particles\fire.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\particles\smoke.xnb">
+      <Link>Content\assets\particles\smoke.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\1\1.xnb">
+      <Link>Content\assets\background\1\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\1\2.xnb">
+      <Link>Content\assets\background\1\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\1\3.xnb">
+      <Link>Content\assets\background\1\3.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\2\1.xnb">
+      <Link>Content\assets\background\2\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\2\2.xnb">
+      <Link>Content\assets\background\2\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\2\3.xnb">
+      <Link>Content\assets\background\2\3.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\3\1.xnb">
+      <Link>Content\assets\background\3\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\3\2.xnb">
+      <Link>Content\assets\background\3\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\3\3.xnb">
+      <Link>Content\assets\background\3\3.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\3\effects.xnb">
+      <Link>Content\assets\background\3\effects.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\4\1.xnb">
+      <Link>Content\assets\background\4\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\4\2.xnb">
+      <Link>Content\assets\background\4\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\MacOSX\assets\background\4\3.xnb">
+      <Link>Content\assets\background\4\3.xnb</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.icns" />
   </ItemGroup>
 </Project>

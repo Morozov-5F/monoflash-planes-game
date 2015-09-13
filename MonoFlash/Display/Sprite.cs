@@ -12,6 +12,41 @@ namespace MonoFlash.Display
         public List<DisplayObject> children;
         public bool visible;
 
+        new public float ScaleX
+        {
+            get
+            {
+                return base.ScaleX;
+            }
+            set
+            {
+                base.ScaleX = value;
+                // Negative scale
+                for (int i = 0; i < children.Count; ++i)
+                {
+                    var currentChild = children[i]; 
+                    currentChild.flippedX ^= flippedX;
+                }
+            }
+        } 
+        new public float ScaleY
+        {
+            get
+            {
+                return base.ScaleY;
+            }
+            set
+            {
+                base.ScaleY = value;
+                // Negative scale
+                for (int i = 0; i < children.Count; ++i)
+                {
+                    var currentChild = children[i]; 
+                    currentChild.flippedY ^= flippedY;
+                }
+            }
+        }
+
         public Sprite()
         {
             visible = true;

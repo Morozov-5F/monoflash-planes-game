@@ -19,8 +19,32 @@ namespace PlanesGame
         public const float POWER_SPEED = 0.5f;
 
         public const float RELOAD_TIME = 0.5f;
+        public const int MAX_HP = 3;
 
         public string nick;
+        public Bitmap bmp;
+
+        public bool isDead;
+
+        private int hp;
+
+        TextField name;
+
+        public int HP
+        {
+            get
+            {
+                return hp;
+            }
+            set
+            {
+                hp = value;
+                if (hp < 0)
+                {
+                    hp = 0;
+                }
+            }
+        }
 
         public float Power
         {
@@ -39,27 +63,35 @@ namespace PlanesGame
 
         public Player(string nick = "NoName", bool isLocal = false)
         {
-            var bmp = new Bitmap(Assets.GetBitmapData("assets/plane", false));   
+            string planeColor = (isLocal) ? "red" : "blue";
+
+            HP = MAX_HP;
+
+            bmp = new Bitmap(Assets.GetBitmapData("assets/plane_" + planeColor, false));   
             bmp.X = -bmp.Width / 2;
             bmp.Y = -bmp.Height / 2;
-            if (!isLocal)
-                bmp.color = Color.Aqua;
             AddChild(bmp);
 
             this.isLocal = isLocal;
             this.nick = nick;
 
-            TextField name = new TextField();
+            name = new TextField();
             name.font = Assets.GetFont("assets/MainFont");
             name.text = nick;
             name.ScaleX = name.ScaleY = 0.3f;
-            name.X = bmp.X - (name.Width / 3);
-            name.Y = bmp.Y - bmp.Height / 2 - name.Height;
-            AddChild(name);
+            name.X = bmp.X - (name.Width / 2);
+            name.Y = bmp.Y - bmp.Height - name.Height;
+//            AddChild(name);
         }
 
         public void Update(float deltaTime)
         {
+//            name.Rotation = -Rotation;
+//            name.flippedY = false;
+
+            if (isDead)
+                return;
+
             if (isLocal)
             {
                 UpdateLocal(deltaTime);
@@ -89,7 +121,7 @@ namespace PlanesGame
 
         void UpdateRemote(float deltaTime)
         {
-            
+                
         }
     }
 }

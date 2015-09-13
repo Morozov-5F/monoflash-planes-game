@@ -16,7 +16,7 @@ namespace PlanesGame.Screens
         private Sprite [] bgLayers;
         private float[] LAYER_DEPTHS = { 0, 0.5f, 0.75f };
 
-        private TextField logo;
+        private Bitmap logo;
         private TextField hostButton;
         private TextField joinButton;
         private Bitmap plane;
@@ -38,8 +38,8 @@ namespace PlanesGame.Screens
             {
                 bgLayers[i] = new Sprite();
 
-                var bmp1 = new Bitmap(Assets.GetBitmapData("assets/background/" + (i + 1).ToString(), true));
-                var bmp2 = new Bitmap(Assets.GetBitmapData("assets/background/" + (i + 1).ToString(), true));
+                var bmp1 = new Bitmap(Assets.GetBitmapData("assets/background/1/" + (i + 1).ToString(), true));
+                var bmp2 = new Bitmap(Assets.GetBitmapData("assets/background/1/" + (i + 1).ToString(), true));
 
                 bmp2.X = bmp1.Width;
 
@@ -52,29 +52,29 @@ namespace PlanesGame.Screens
             guiContainer = new Sprite();
             AddChild(guiContainer);
             // Лого 
-            logo = new TextField();
-            logo.font = Assets.GetFont("assets/MainFont");
-            logo.text = "MULTIPLANES";
+            logo = new Bitmap(Assets.GetBitmapData("assets/logo", true));
+//            logo.font = Assets.GetFont("assets/MainFont");
+//            logo.text = "MULTIPLANES";
             logo.X = GameMain.ScreenWidth / 2 - logo.Width / 2;
             logo.Y = 10 / GameMain.mainScale;
             time = 0;
             guiContainer.AddChild(logo);
             // Кнопка join
             joinButton = new TextField();
-            joinButton.font = logo.font;
+            joinButton.font = Assets.GetFont("assets/MainFont");
             joinButton.text = "Join game";
             joinButton.ScaleX = joinButton.ScaleY = 0.5f;
             joinButton.X = GameMain.ScreenWidth / 2 - joinButton.Width / 2;
             joinButton.Y = GameMain.ScreenHeight / 2 + joinButton.Height;
             guiContainer.AddChild(joinButton);
             // Самолетик
-            plane = new Bitmap(Assets.GetBitmapData("assets/plane"));
+            plane = new Bitmap(Assets.GetBitmapData("assets/plane_red"));
             plane.Y = (joinButton.Y + (logo.Y + logo.Height)) / 2 - plane.Height / 2;
             plane.X = GameMain.ScreenWidth / 2 - plane.Width / 2;
             guiContainer.AddChild(plane);
             // Кнопка host
             hostButton = new TextField();
-            hostButton.font = logo.font;
+            hostButton.font = joinButton.font;
             hostButton.text = "Host game";
             hostButton.ScaleX = hostButton.ScaleY = 0.5f;
             hostButton.X = GameMain.ScreenWidth / 2 - hostButton.Width / 2;
@@ -85,9 +85,12 @@ namespace PlanesGame.Screens
         }
   
         void joinGameEvent(Event e)
-        {
-//            
+        { 
             Debug.WriteLine("Joining Game!");
+//            #if DEBUG
+//            GameMain.screenManager.LoadScreen(new GameScreen(null, NickGenerator.GenerateNick(DateTime.Now.Ticks), "", false));
+//            return;
+//            #endif
             GameMain.screenManager.LoadScreen(new JoinGameScreen());
         }
 
@@ -110,7 +113,7 @@ namespace PlanesGame.Screens
         public override void Update(float deltaTime)
         {
             time += deltaTime;
-//            logo.Y += (float)Math.Sin(time ) * 0.008f;
+            logo.Y += (float)Math.Sin(time ) * 0.008f;
             plane.Y += (float)Math.Sin(time * 4) * 0.08f;
             for (int i = 0; i < bgLayers.Length; ++ i)
             {

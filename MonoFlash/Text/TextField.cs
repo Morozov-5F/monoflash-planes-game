@@ -11,14 +11,19 @@ namespace MonoFlash.Text
         public string text;
         public Color textColor;
 
+        public bool visible;
 
         public TextField()
         {
             textColor = Color.White;
+            visible = true;
         }
 
         public override void Render(SpriteBatch spriteBatch, Matrix transform)
         {
+            if (!visible)
+                return;
+
             var newTransform = this.transformMatrix * transform;
             Vector2 pos, scale; 
             float rot;

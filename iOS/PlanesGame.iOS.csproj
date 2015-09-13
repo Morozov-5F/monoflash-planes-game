@@ -87,6 +87,12 @@
     <None Include="Info.plist" />
     <None Include="packages.config" />
     <None Include="Entitlements.plist" />
+    <None Include="..\PlanesGame\Content\bin\iOS\assets\particles\fire.xnb">
+      <Link>Content\assets\particles\fire.xnb</Link>
+    </None>
+    <None Include="..\PlanesGame\Content\bin\iOS\assets\particles\smoke.xnb">
+      <Link>Content\assets\particles\smoke.xnb</Link>
+    </None>
     <None Include="..\PlanesGame\Content\bin\iOS\assets\Minecraft.ttf">
       <Link>Content\assets\Minecraft.ttf</Link>
     </None>
@@ -119,32 +125,65 @@
     <Content Include="..\PlanesGame\Content\bin\iOS\assets\bullet.xnb">
       <Link>Content\assets\bullet.xnb</Link>
     </Content>
-    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\1.xnb">
-      <Link>Content\assets\background\1.xnb</Link>
-    </Content>
-    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\2.xnb">
-      <Link>Content\assets\background\2.xnb</Link>
-    </Content>
-    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\3.xnb">
-      <Link>Content\assets\background\3.xnb</Link>
-    </Content>
-    <Content Include="..\PlanesGame\Content\bin\iOS\assets\particles\fire.xnb">
-      <Link>Content\assets\particles\fire.xnb</Link>
-    </Content>
-    <Content Include="..\PlanesGame\Content\bin\iOS\assets\particles\smoke.xnb">
-      <Link>Content\assets\particles\smoke.xnb</Link>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\logo.xnb">
+      <Link>Content\assets\logo.xnb</Link>
     </Content>
     <Content Include="..\PlanesGame\Content\bin\iOS\assets\plane.xnb">
       <Link>Content\assets\plane.xnb</Link>
     </Content>
-    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\down.xnb">
-      <Link>Content\assets\ui\down.xnb</Link>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\plane_blue.xnb">
+      <Link>Content\assets\plane_blue.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\plane_red.xnb">
+      <Link>Content\assets\plane_red.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\1\1.xnb">
+      <Link>Content\assets\background\1\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\1\2.xnb">
+      <Link>Content\assets\background\1\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\1\3.xnb">
+      <Link>Content\assets\background\1\3.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\2\1.xnb">
+      <Link>Content\assets\background\2\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\2\2.xnb">
+      <Link>Content\assets\background\2\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\2\3.xnb">
+      <Link>Content\assets\background\2\3.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\3\1.xnb">
+      <Link>Content\assets\background\3\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\3\2.xnb">
+      <Link>Content\assets\background\3\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\3\3.xnb">
+      <Link>Content\assets\background\3\3.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\3\effects.xnb">
+      <Link>Content\assets\background\3\effects.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\4\1.xnb">
+      <Link>Content\assets\background\4\1.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\4\2.xnb">
+      <Link>Content\assets\background\4\2.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\background\4\3.xnb">
+      <Link>Content\assets\background\4\3.xnb</Link>
     </Content>
     <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\bar.xnb">
       <Link>Content\assets\ui\bar.xnb</Link>
     </Content>
     <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\bar_l.xnb">
       <Link>Content\assets\ui\bar_l.xnb</Link>
+    </Content>
+    <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\down.xnb">
+      <Link>Content\assets\ui\down.xnb</Link>
     </Content>
     <Content Include="..\PlanesGame\Content\bin\iOS\assets\ui\fire.xnb">
       <Link>Content\assets\ui\fire.xnb</Link>

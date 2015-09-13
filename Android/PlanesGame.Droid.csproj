@@ -46,6 +46,9 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>..\packages\MonoGame.Framework.Android.3.3.0.0\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\..\..\..\Downloads\Lidgren-network-gen3\Lidgren.Network\obj\Release\Lidgren.Network.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
@@ -58,14 +61,108 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\drawable\Splash.png" />
     <AndroidResource Include="Resources\values\Styles.xml" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
     <AndroidAsset Include="Assets\Content\Content.mgcb" />
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\MainFont.xnb">
+      <Link>Assets\Content\assets\MainFont.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\Minecraft.ttf">
+      <Link>Assets\Content\assets\Minecraft.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\bullet.xnb">
+      <Link>Assets\Content\assets\bullet.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\logo.xnb">
+      <Link>Assets\Content\assets\logo.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\pixelmix.ttf">
+      <Link>Assets\Content\assets\pixelmix.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\plane_blue.xnb">
+      <Link>Assets\Content\assets\plane_blue.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\plane_red.xnb">
+      <Link>Assets\Content\assets\plane_red.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\rainyhearts.ttf">
+      <Link>Assets\Content\assets\rainyhearts.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\1\1.xnb">
+      <Link>Assets\Content\assets\background\1\1.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\1\2.xnb">
+      <Link>Assets\Content\assets\background\1\2.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\1\3.xnb">
+      <Link>Assets\Content\assets\background\1\3.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\2\1.xnb">
+      <Link>Assets\Content\assets\background\2\1.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\2\2.xnb">
+      <Link>Assets\Content\assets\background\2\2.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\2\3.xnb">
+      <Link>Assets\Content\assets\background\2\3.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\3\1.xnb">
+      <Link>Assets\Content\assets\background\3\1.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\3\2.xnb">
+      <Link>Assets\Content\assets\background\3\2.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\3\3.xnb">
+      <Link>Assets\Content\assets\background\3\3.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\3\effects.xnb">
+      <Link>Assets\Content\assets\background\3\effects.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\4\1.xnb">
+      <Link>Assets\Content\assets\background\4\1.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\4\2.xnb">
+      <Link>Assets\Content\assets\background\4\2.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\4\3.xnb">
+      <Link>Assets\Content\assets\background\4\3.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\particles\fire.xnb">
+      <Link>Assets\Content\assets\particles\fire.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\particles\smoke.xnb">
+      <Link>Assets\Content\assets\particles\smoke.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\ui\bar.xnb">
+      <Link>Assets\Content\assets\ui\bar.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\ui\bar_l.xnb">
+      <Link>Assets\Content\assets\ui\bar_l.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\ui\down.xnb">
+      <Link>Assets\Content\assets\ui\down.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\ui\fire.xnb">
+      <Link>Assets\Content\assets\ui\fire.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\ui\left.xnb">
+      <Link>Assets\Content\assets\ui\left.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\ui\right.xnb">
+      <Link>Assets\Content\assets\ui\right.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\ui\up.xnb">
+      <Link>Assets\Content\assets\ui\up.xnb</Link>
+    </AndroidAsset>
   </ItemGroup>
   <Import Project="..\PlanesGame\PlanesGame.projitems" Label="Shared" Condition="Exists('..\PlanesGame\PlanesGame.projitems')" />
+  <Import Project="..\MonoFlash\MonoFlash.projitems" Label="Shared" Condition="Exists('..\MonoFlash\MonoFlash.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Assets\Content\assets\" />
+  </ItemGroup>
 </Project>
