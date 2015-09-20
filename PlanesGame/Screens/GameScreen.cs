@@ -266,7 +266,7 @@ namespace PlanesGame.Screens
         {
             if (isHost)
             {
-                localPlayer.X = localPlayer.Y = remotePlayer.Y = 10;
+                localPlayer.X = localPlayer.Y = 10;
             }
             else
             {
@@ -287,7 +287,7 @@ namespace PlanesGame.Screens
             remotePlayer.Update(deltaTime);
 //            Debug.WriteLine(bullets.Count);
             var worldX = -localPlayer.X + GameMain.ScreenWidth / 2;
-            worldX = Math.Max(worldX, -GameScreen.WORLD_WIDTH + GameMain.ScreenWidth);
+            worldX = Math.Max(worldX, -WORLD_WIDTH + GameMain.ScreenWidth);
             worldX = Math.Min(worldX, 0);
 
             var dx = worldX - worldContainer.X;
@@ -455,6 +455,8 @@ namespace PlanesGame.Screens
                             remotePlayer.HP = Player.MAX_HP;
                             remotePlayer.isDead = false;
                             remotePlayer.visible = true;
+
+                            localPlayer.HP = Player.MAX_HP;
 
                             resultLabel.visible = countLabel.visible = false;
                             if (isHost)
