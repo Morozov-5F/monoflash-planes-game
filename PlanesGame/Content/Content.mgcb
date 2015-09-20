@@ -3,7 +3,7 @@
 
 /outputDir:bin/$(Platform)
 /intermediateDir:obj/$(Platform)
-/platform:iOS
+/platform:Android
 /config:
 /profile:Reach
 /compress:True
@@ -118,9 +118,6 @@
 /processorParam:TextureFormat=NoChange
 /build:assets/MainFont.spritefont
 
-#begin assets/Minecraft.ttf
-/copy:assets/Minecraft.ttf
-
 #begin assets/bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -131,12 +128,6 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:assets/bullet.png
-
-#begin assets/pixelmix.ttf
-/copy:assets/pixelmix.ttf
-
-#begin assets/rainyhearts.ttf
-/copy:assets/rainyhearts.ttf
 
 #begin assets/background/1/1.png
 /importer:TextureImporter

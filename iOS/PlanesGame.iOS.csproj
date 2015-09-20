@@ -93,15 +93,6 @@
     <None Include="..\PlanesGame\Content\bin\iOS\assets\particles\smoke.xnb">
       <Link>Content\assets\particles\smoke.xnb</Link>
     </None>
-    <None Include="..\PlanesGame\Content\bin\iOS\assets\Minecraft.ttf">
-      <Link>Content\assets\Minecraft.ttf</Link>
-    </None>
-    <None Include="..\PlanesGame\Content\bin\iOS\assets\pixelmix.ttf">
-      <Link>Content\assets\pixelmix.ttf</Link>
-    </None>
-    <None Include="..\PlanesGame\Content\bin\iOS\assets\rainyhearts.ttf">
-      <Link>Content\assets\rainyhearts.ttf</Link>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default.png" />
@@ -127,9 +118,6 @@
     </Content>
     <Content Include="..\PlanesGame\Content\bin\iOS\assets\logo.xnb">
       <Link>Content\assets\logo.xnb</Link>
-    </Content>
-    <Content Include="..\PlanesGame\Content\bin\iOS\assets\plane.xnb">
-      <Link>Content\assets\plane.xnb</Link>
     </Content>
     <Content Include="..\PlanesGame\Content\bin\iOS\assets\plane_blue.xnb">
       <Link>Content\assets\plane_blue.xnb</Link>

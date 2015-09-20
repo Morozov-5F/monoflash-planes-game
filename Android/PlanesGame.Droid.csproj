@@ -71,26 +71,17 @@
     <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\MainFont.xnb">
       <Link>Assets\Content\assets\MainFont.xnb</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\Minecraft.ttf">
-      <Link>Assets\Content\assets\Minecraft.ttf</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\bullet.xnb">
       <Link>Assets\Content\assets\bullet.xnb</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\logo.xnb">
       <Link>Assets\Content\assets\logo.xnb</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\pixelmix.ttf">
-      <Link>Assets\Content\assets\pixelmix.ttf</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\plane_blue.xnb">
       <Link>Assets\Content\assets\plane_blue.xnb</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\plane_red.xnb">
       <Link>Assets\Content\assets\plane_red.xnb</Link>
-    </AndroidAsset>
-    <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\rainyhearts.ttf">
-      <Link>Assets\Content\assets\rainyhearts.ttf</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\PlanesGame\Content\bin\Android\assets\background\1\1.xnb">
       <Link>Assets\Content\assets\background\1\1.xnb</Link>

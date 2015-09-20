@@ -35,7 +35,7 @@ namespace PlanesGame.Screens
 
         private NetClient client;
         private string localNick, remoteNick;
-        public const int WORLD_WIDTH = 160;
+        public const int WORLD_WIDTH = 140;
         private bool isHost;
 
         private float respTime;
@@ -89,12 +89,14 @@ namespace PlanesGame.Screens
                 localPlayer.X = localPlayer.Y = remotePlayer.Y = 10;
                 remotePlayer.X = WORLD_WIDTH - GameMain.ScreenWidth / 2;
                 remotePlayer.Rotation = 180;
+                remotePlayer.ScaleY = -1;
             }
             else
             {
                 remotePlayer.X = remotePlayer.Y = localPlayer.Y = 10;
                 localPlayer.X = WORLD_WIDTH - GameMain.ScreenWidth / 2;
                 localPlayer.Rotation = 180;
+                localPlayer.ScaleY = -1;
             }
             gameContainer.AddChild(localPlayer);
             gameContainer.AddChild(remotePlayer);
@@ -283,7 +285,7 @@ namespace PlanesGame.Screens
             // TODO: maybe replace updates?
             localPlayer.Update(deltaTime);
             remotePlayer.Update(deltaTime);
-
+//            Debug.WriteLine(bullets.Count);
             var worldX = -localPlayer.X + GameMain.ScreenWidth / 2;
             worldX = Math.Max(worldX, -GameScreen.WORLD_WIDTH + GameMain.ScreenWidth);
             worldX = Math.Min(worldX, 0);
@@ -317,14 +319,14 @@ namespace PlanesGame.Screens
                 if (cB.lifeTime <= 0)
                 {
                     gameContainer.RemoveChild(cB);
-                    cB = null;
+                    bullets[i] = null;
                     continue;
                 }
                 Player playerToHit = cB.isLocal ? remotePlayer : localPlayer;
                 if (cB.HitTestObject(playerToHit))
                 {
                     gameContainer.RemoveChild(cB);
-                    cB = null;
+                    bullets[i] = null;
                     // Если игрок локальный, то отсылаем серверу попадания
                     if (playerToHit == localPlayer)
                     {
@@ -344,7 +346,7 @@ namespace PlanesGame.Screens
                     continue;
                 }
             }
-            bullets.RemoveAll(item => (item == null));
+            bullets.RemoveAll(x => x == null);
 
             #if !__MOBILE__
 
@@ -455,11 +457,14 @@ namespace PlanesGame.Screens
                             remotePlayer.visible = true;
 
                             resultLabel.visible = countLabel.visible = false;
+                            if (isHost)
+                                ChangeLevel();
                         }
                         break;
                     default:
                         break;
                 }
+                client.Recycle(msg);
             }
         }
     }

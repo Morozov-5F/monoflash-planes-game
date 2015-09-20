@@ -129,7 +129,7 @@ namespace PlanesGame.Screens
             connectButton.text = "Connect";
             connectButton.ScaleX = connectButton.ScaleY = 0.5f;
             connectButton.X = GameMain.ScreenWidth * 0.25f - connectButton.Width / 2;
-            connectButton.Y = GameMain.ScreenHeight - connectButton.Height * 2;
+            connectButton.Y = GameMain.ScreenHeight - connectButton.Height;
             connectButton.textColor = Color.DarkGray;
             guiContainer.AddChild(connectButton);
 

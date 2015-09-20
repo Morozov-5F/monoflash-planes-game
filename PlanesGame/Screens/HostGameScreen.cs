@@ -78,7 +78,7 @@ namespace PlanesGame.Screens
             waitLabel.font = roomNameLabel.font;
             waitLabel.text = "Waiting for other player to connect. . .";
             waitLabel.X = roomNameLabel.X;
-            waitLabel.Y = roomNameLabel.Y + roomNameLabel.Height * 2;
+            waitLabel.Y = roomNameLabel.Y + roomNameLabel.Height;
             waitLabel.ScaleX = waitLabel.ScaleY = 0.25f;
             guiContainer.AddChild(waitLabel);
         }

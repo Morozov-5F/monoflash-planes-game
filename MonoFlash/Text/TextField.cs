@@ -17,6 +17,7 @@ namespace MonoFlash.Text
         {
             textColor = Color.White;
             visible = true;
+            text = "";
         }
 
         public override void Render(SpriteBatch spriteBatch, Matrix transform)
@@ -34,6 +35,11 @@ namespace MonoFlash.Text
 
         public override Vector4 GetBounds()
         {
+            if (font == null || text == "")
+            {
+                return new Vector4();
+            }
+            
             var textBounds = font.MeasureString(text);
 
             var matrix = new Matrix(0, 0, 0, 1, textBounds.X, 0, 0, 1, 0, textBounds.Y, 0, 1, textBounds.X, textBounds.Y, 0, 1);

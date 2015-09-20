@@ -78,7 +78,7 @@ namespace PlanesGame.Screens
             hostButton.text = "Host game";
             hostButton.ScaleX = hostButton.ScaleY = 0.5f;
             hostButton.X = GameMain.ScreenWidth / 2 - hostButton.Width / 2;
-            hostButton.Y = joinButton.Y + joinButton.Height * 2;
+            hostButton.Y = joinButton.Y + joinButton.Height;
             guiContainer.AddChild(hostButton);
             joinButton.AddEventListener(Event.TOUCH_END, joinGameEvent);
             hostButton.AddEventListener(Event.TOUCH_END, hostGameEvent);

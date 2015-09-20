@@ -8,7 +8,7 @@ namespace PlanesGame
     public class Bullet : Sprite
     {
         public const float MAX_VELOCITY = 60;
-        public const float MAX_LIFETIME = 3;
+        public const float MAX_LIFETIME = 2f;
 
         public float lifeTime;
         public bool isLocal;
